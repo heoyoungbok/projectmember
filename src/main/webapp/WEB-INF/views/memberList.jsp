@@ -23,6 +23,8 @@
          <th>나이</th>
          <th>전화번호</th>
          <th>조회</th>
+         <th>삭제</th>
+         <th>수정</th>
      </tr>
  <c:forEach items="${memberList}" var="member">
      <tr>
@@ -37,9 +39,27 @@
          <td>
              <a href="/member?memberId=${member.memberId}">조회</a>
          </td>
+
+         <td>
+             <button class="btn btn-danger" onclick="deleteMember('${member.memberId}')">삭제</button>  <!-- 함수 호출을 통하여 기능 수행 -->
+         </td>
+         <td>
+             <button class="btn btn-primary" onclick="updateMember('${member.memberEmail}')">수정</button>
+         </td>
      </tr>
  </c:forEach>
     </table>
 </div>
 </body>
+<script>
+    const deleteMember = (clickedId) => {
+        <%--console.log('${memberList}');--%>
+        console.log("클릭한 id값:",clickedId);
+      location.href="/delete?memberId="+clickedId;
+    }
+
+    const updateMember =(clickMail) => {
+        location.href="/update?memberEmail="+clickMail;
+    }
+</script>
 </html>

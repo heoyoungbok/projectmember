@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MemberService {
+public class MemberService<MewberDTO> {
     @Autowired
     private MemberRepository memberRepository;
     /* 리턴타입 : if문
@@ -61,11 +61,21 @@ public class MemberService {
     //오버로딩 매서드 수와 타입 다를 때  같은 타입에 매서드를 재생성
     public boolean login(MemberDTO memberDTO) {
         MemberDTO member = memberRepository.login(memberDTO);
-        if(memberDTO != null){
+        if(member != null){
             return true;
         }else {
             return false;
         }
 
+    }
+
+
+    public void delete(Long memberId) {
+        memberRepository.delete(memberId);
+    }
+
+
+    public void update(String memberEmail) {
+        memberRepository.update(memberEmail);
     }
 }

@@ -39,8 +39,7 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String loginForm(){
-        return "memberLogin";
+    public String loginForm(){return "memberLogin";
     }
 //    @PostMapping("/login")
 //   public String login(@RequestParam("memberEmail")String memberEmail,
@@ -105,9 +104,41 @@ public String login(@ModelAttribute MemberDTO memberDTO ,HttpSession session,Mod
 //
 //}
 //
+    @GetMapping("/delete")
+    public String delete(@RequestParam("memberId")Long memberId){
+        memberService.delete(memberId);
+//        // 1. 삭제후 목록을 DB에서 가져오고 memberList.jsp로 간다
+//        List<MemberDTO> memberDTOList = memberService.findAll();
+//        model.addAttribute("memberList",memberDTOList);
+//        return "memberList";
+//       //2 . redirect 방식을 이용하기 /members 주소요청  삭제후 목록으로 보여주는 것
+
+        return "redirect:/members";
 
 
     }
+
+    @GetMapping ("/update")
+    public String updateForm(){
+        return "memberUpdate";
+    }
+
+
+     @PostMapping("/update")
+    public String update(@RequestParam("memberEmail") String memberEmail ,HttpSession session){
+
+        memberService.update(memberEmail);
+
+            session.getAttribute("memberEmail");
+
+            return "redirect:/members";
+
+
+        }
+
+        }
+
+
 
 
 

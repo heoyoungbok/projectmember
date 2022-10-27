@@ -20,5 +20,13 @@
     <select id="findById" parameterType="Long" resultType="member">
         select * from  member_table where memberId=${memberId}
     </select>
+
+    <delete id="delete" parameterType="Long">
+        delete from  member_table where memberId=#{memberId}
+    </delete>
+
+ <update id="update" parameterType="member">
+ update  member_table SET memberEmail=#{memberEmail} where memberEmail
+ </update>
 </mapper>
 

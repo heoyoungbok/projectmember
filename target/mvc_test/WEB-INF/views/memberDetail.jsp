@@ -12,6 +12,7 @@
  <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
+
   <div class="container">
     <table class="table table-striped">
     <tr>

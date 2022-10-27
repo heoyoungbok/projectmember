@@ -30,7 +30,7 @@
        location.href = "/save";
     }
 
-    const  loginFn = () => {
+    const loginFn = () => {
         location.href ="/login";
     }
 

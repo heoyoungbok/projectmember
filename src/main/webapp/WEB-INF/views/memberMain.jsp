@@ -18,10 +18,6 @@
     <%-- 세션의 값을 사용  --%>
     <h2>model 값: ${modelEmail}</h2>
     <a href="/">index.jsp</a>
-<a href="/member">회원목록조회</a>
-<a href="/members">회원조회</a>
-<a href="/delete">회원탈퇴</a>
-<a href="/update">회원수정</a>
 </div>
 </body>
 </html>
