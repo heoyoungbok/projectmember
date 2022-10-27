@@ -16,9 +16,9 @@
 
 <%-- 세션의 값을 사용  --%>
 <h2>model 값: ${modelEmail}</h2>
-<a href="/save">회원가입</a><br>
-<a href="/login">로그인</a><br>
-<a href="/members">회원목록</a><br>
+<%--<a href="/save">회원가입</a><br>--%>
+<%--<a href="/login">로그인</a><br>--%>
+<%--<a href="/members">회원목록</a><br>--%>
 <button class="btn btn-primary" onclick="saveFn()">회원가입</button>
 <button class="btn btn-danger" onclick="loginFn()">로그인</button>
 <button class="btn btn-dark" onclick="listFn()">목록</button>

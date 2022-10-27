@@ -10,21 +10,18 @@
 <html>
 <head>
     <title>memberList.jsp</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
+<div class="container">
+    <table class="table table-striped table-hover"></table>
      <tr>
          <th>이메일</th>
-         <br>
          <th>비밀번호</th>
-         <br>
          <th>이름</th>
-         <br>
          <th>나이</th>
-         <br>
          <th>전화번호</th>
-         <br>
      </tr>
-
  <c:forEach items="${memberList}" var="member">
      <tr>
          <td>${member.memberId}</td>
@@ -35,9 +32,12 @@
          <td>${member.memberName}</td>
          <td>${member.memberAge}</td>
          <td>${member.memberMobile}</td>
+         <td>
+             <a href="/member?memberId=${member.memberId}">조회</a>
+         </td>
      </tr>
  </c:forEach>
 
-
+</div>
 </body>
 </html>

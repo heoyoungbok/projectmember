@@ -23,6 +23,7 @@
     <input type="text" name="memberEmail" placeholder="이메일" class="form-control"><br>
      <span id="email-input-check"></span>
     <input type="text" name="memberPassword" placeholder="비밀번호" class="form-control"><br>
+    <span id="pass-input-check"></span>
     <input type="text" name="memberName" placeholder="이름" class="form-control"><br>
     <input type="text" name="memberAge" placeholder="나이" class="form-control"><br>
     <input type="text" name="memberMobile" placeholder="전화번호" class="form-control"><br>
@@ -48,7 +49,9 @@
             // alert("이메일을 입력해주세요");
 
         } else if (document.saveForm.memberPassword.value == "") {
-            alert("비밀번호를 입력해주세요");
+            const passCheck = document.getElementById("pass-input-check");
+            passCheck.innerHTML = "비밀번호를 입력해주세요";
+            passCheck.style.color = "red";
             return false;
         } else if (document.saveForm.memberName.value == "") {
             alert("이름을 입력해주세요");
