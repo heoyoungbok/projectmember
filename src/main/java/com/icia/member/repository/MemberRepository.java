@@ -38,9 +38,9 @@ public class MemberRepository {
         return sql.selectOne("Member.findById",memberId);
     }
 
-    public MemberDTO findMember() {
-    return sql.selectOne("Member.findMember");
-    }
+//    public MemberDTO findMember() {
+//    return sql.selectOne("Member.findMember");
+//    }
 
     public MemberDTO login(MemberDTO memberDTO) {
         return sql.selectOne("Member.login",memberDTO);

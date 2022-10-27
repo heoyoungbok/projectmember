@@ -82,13 +82,13 @@ public String login(@ModelAttribute MemberDTO memberDTO ,HttpSession session,Mod
     }
 
 
-    @GetMapping ("/memberDetail")
-    public String findMember(Model model){
-        MemberDTO findResult = memberService.findMember();
-        model.addAttribute("member",findResult);
-        return "findMember";
-
-    }
+//    @GetMapping ("/memberDetail")
+//    public String findMember(Model model){
+//        MemberDTO findResult = memberService.findMember();
+//        model.addAttribute("member",findResult);
+//        return "findMember";
+//
+//    }
 
 
 

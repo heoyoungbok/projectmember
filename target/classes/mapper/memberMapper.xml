@@ -17,11 +17,6 @@
         select * from  member_table
     </select>
 
-    <select id="findMember" resultType="member">
-     select * from member_table where memberId
-
-    </select>
-
     <select id="findById" parameterType="Long" resultType="member">
         select * from  member_table where memberId=${memberId}
     </select>

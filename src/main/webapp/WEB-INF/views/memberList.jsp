@@ -14,19 +14,21 @@
 </head>
 <body>
 <div class="container">
-    <table class="table table-striped table-hover"></table>
+    <table class="table table-striped table-hover">
      <tr>
+         <th>번호</th>
          <th>이메일</th>
          <th>비밀번호</th>
          <th>이름</th>
          <th>나이</th>
          <th>전화번호</th>
+         <th>조회</th>
      </tr>
  <c:forEach items="${memberList}" var="member">
      <tr>
          <td>${member.memberId}</td>
          <td>
-             <a href="/member?memberId=${member.memberId}">${member.memberEmail}></a>
+             <a href="/member?memberId=${member.memberId}">${member.memberEmail}</a>
          </td>
          <td>${member.memberPassword}</td>
          <td>${member.memberName}</td>
@@ -37,7 +39,7 @@
          </td>
      </tr>
  </c:forEach>
-
+    </table>
 </div>
 </body>
 </html>

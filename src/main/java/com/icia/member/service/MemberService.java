@@ -54,9 +54,9 @@ public class MemberService {
         return memberRepository.findById(memberId);
     }
 
-    public MemberDTO findMember() {
-        return memberRepository.findMember();
-    }
+//    public MemberDTO findMember() {
+//        return memberRepository.findMember();
+//    }
 
     //오버로딩 매서드 수와 타입 다를 때  같은 타입에 매서드를 재생성
     public boolean login(MemberDTO memberDTO) {
