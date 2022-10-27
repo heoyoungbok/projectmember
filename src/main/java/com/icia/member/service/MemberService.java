@@ -35,11 +35,14 @@ public class MemberService {
      * */
 
 
-    public MemberDTO login(String memberEmail, String memberPassword){
+    public boolean login(String memberEmail, String memberPassword){
+             MemberDTO memberDTO = memberRepository.login(memberEmail,memberPassword);
+            if(memberDTO != null){
+                return true;
+            }else {
+                return false;
+            }
 
-
-
-        return memberRepository.login(memberEmail,memberPassword);
     }
 
     public List<MemberDTO> findAll() {
@@ -53,5 +56,16 @@ public class MemberService {
 
     public MemberDTO findMember() {
         return memberRepository.findMember();
+    }
+
+    //오버로딩 매서드 수와 타입 다를 때  같은 타입에 매서드를 재생성
+    public boolean login(MemberDTO memberDTO) {
+        MemberDTO member = memberRepository.login(memberDTO);
+        if(memberDTO != null){
+            return true;
+        }else {
+            return false;
+        }
+
     }
 }

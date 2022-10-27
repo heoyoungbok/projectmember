@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -41,18 +42,32 @@ public class MemberController {
     public String loginForm(){
         return "memberLogin";
     }
-    @PostMapping("/login")
-   public String login(@RequestParam("memberEmail")String memberEmail,
-                       @RequestParam("memberPassword")String memberPassword,Model model){
+//    @PostMapping("/login")
+//   public String login(@RequestParam("memberEmail")String memberEmail,
+//                       @RequestParam("memberPassword")String memberPassword,Model model){
+//
+//        boolean loginResult = memberService.login(memberEmail, memberPassword);
+//        if(loginResult){
+//            return "memberMain";
+//        }else {
+//          return  "memberLogin";
+//        }
+//        model.addAttribute("memberEmail",memberDTO);
+//        model.addAttribute("memberPassword",memberDTO);
 
-        MemberDTO memberDTO = memberService.login(memberEmail, memberPassword);
-        model.addAttribute("memberEmail",memberDTO);
-        model.addAttribute("memberPassword",memberDTO);
-
-
-        return "memberMain";
-    }
-
+//    }
+@PostMapping("/login") // 주소가 같아서 쓸수가 없음
+public String login(@ModelAttribute MemberDTO memberDTO ,HttpSession session,Model model){
+    boolean loginResult = memberService.login(memberDTO);
+       if(loginResult){
+           //세션에 로그인한 사용자의 이메일을 저장
+           session.setAttribute("loginEmail",memberDTO.getMemberEmail()); // 담을 객체 / 가져와서 정보를 주는 객체
+           model.addAttribute("modelEmail",memberDTO.getMemberEmail());
+           return "memberMain";
+       }else {
+         return  "memberLogin";
+       }
+}
 
     /* 리턴타입 :memberList.jsp
      * 매개변수: 모덜 2

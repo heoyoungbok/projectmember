@@ -9,7 +9,7 @@
      values (#{memberEmail},#{memberPassword},#{memberName},#{memberMobile},#{memberAge})
  </insert>
 
-   <select id="login" parameterType="String" resultType="member">
+   <select id="login" parameterType="member" resultType="member">
        select  * from member_table where memberEmail=#{memberEmail} and memberPassword=#{memberPassword}
    </select>
 
