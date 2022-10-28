@@ -17,7 +17,25 @@
 
     <%-- 세션의 값을 사용  --%>
     <h2>model 값: ${modelEmail}</h2>
+    <button class="btn btn-warning" onclick="updateForm()">정보수정</button>
+    <button class="btn btn-danger" onclick="logout()">로그아웃</button>
+    <button class="btn btn-light" onclick="board()">게시글</button>
     <a href="/">index.jsp</a>
 </div>
 </body>
+ <script>
+
+
+
+
+     const updateForm = () => {
+       location.href="/update";
+     }
+     const logout = () => {
+         location.href="/logout";
+     }
+     const board = () => {
+         location.href="board";
+     }
+ </script>
 </html>

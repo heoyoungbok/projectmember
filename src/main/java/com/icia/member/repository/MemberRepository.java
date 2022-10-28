@@ -51,10 +51,21 @@ public class MemberRepository {
          sql.delete("Member.delete",memberId);
     }
 
+//    public void update(String memberEmail) {
+//    }
 
-    public void update(String memberEmail) {
-        sql.update("Member.update",memberEmail);
+    public MemberDTO findByEmail(String memberEmail) {
+      return sql.selectOne("Member.findByEmail",memberEmail);
     }
+
+    public int update(MemberDTO memberDTO) {
+     return sql.update("Member.update",memberDTO);
+    }
+
+
+//    public void update(String memberEmail) {
+//        sql.update("Member.update",memberEmail);
+//    }
 }
 
 

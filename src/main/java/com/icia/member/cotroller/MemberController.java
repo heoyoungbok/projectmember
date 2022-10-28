@@ -115,28 +115,74 @@ public String login(@ModelAttribute MemberDTO memberDTO ,HttpSession session,Mod
 
         return "redirect:/members";
 
-
     }
 
-    @GetMapping ("/update")
-    public String updateForm(){
+
+
+
+
+    //
+
+///*  선언
+//리턴타입 : memberUpdate
+// */
+//
+//- 매개변수: memberEmail
+//- 매서드이름:update
+//- /
+//
+//호출
+
+
+      @GetMapping ("/update")
+         public String updateForm(HttpSession session,Model model){
+        //sessiom 값을 가져오기
+        String memberEmail = (String) session.getAttribute("loginEmail");  //getAttribute(추상매서드) 리턴은 오브젝트 오브젝트가 큰 객체이므로 스트링으로 강제형변환을 해준다 .
+        MemberDTO memberDTO = memberService.findByEmail(memberEmail); // 이메일을 db에서 가져오자 이메일을 서비스에 넘겨주고
+        //memberEmail로 DB 에서 해당 회원의 전체정보조회
+
+        model.addAttribute("member",memberDTO); //한명에 대한 것만 수정  dto로
         return "memberUpdate";
+
     }
 
 
-     @PostMapping("/update")
-    public String update(@RequestParam("memberEmail") String memberEmail ,HttpSession session){
+//     @PostMapping("/update")
+//    public String update(@RequestParam("memberEmail") String memberEmail ,HttpSession session){
+//
+//
+//
+//
+//
+//            return "redirect:/members";
 
-        memberService.update(memberEmail);
+@PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO){
+       boolean result = memberService.update(memberDTO);
+       if (result){
+           // 로그인 회원의 memberDetail.jsp 성공하면
+           return "redirect:/member?memberId="+memberDTO.getMemberId(); // 아이디 값은 바뀌니까 dto에 가져와 붙여준다
+       }else {
+          return "index";
+       }
 
-            session.getAttribute("memberEmail");
 
-            return "redirect:/members";
+}
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
+
+    @GetMapping("/board")
+    public String board(){
+        return "boardList";
+    }
 
 
-        }
+}
 
-        }
+
 
 
 

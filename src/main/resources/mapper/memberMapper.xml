@@ -25,8 +25,15 @@
         delete from  member_table where memberId=#{memberId}
     </delete>
 
+    <select id="findByEmail" parameterType="String" resultType="member">
+        select * from member_table where memberEmail=#{memberEmail}
+    </select>
+
+
+
  <update id="update" parameterType="member">
- update  member_table SET memberEmail=#{memberEmail} where memberEmail
+ update  member_table SET memberEmail=#{memberEmail},memberAge=#{memberAge} where memberId=#{memberId}
  </update>
+
 </mapper>
 
