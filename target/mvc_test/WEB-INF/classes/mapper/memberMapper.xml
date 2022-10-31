@@ -35,5 +35,10 @@
  update  member_table SET memberEmail=#{memberEmail},memberAge=#{memberAge} where memberId=#{memberId}
  </update>
 
+<select id="DuplicateCheck" parameterType="String" resultType="String">
+    select memberEmail from member_table where memberEmail=#{memberEmail}
+</select>
+
+
 </mapper>
 

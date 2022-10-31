@@ -22,10 +22,17 @@
 <button class="btn btn-primary" onclick="saveFn()">회원가입</button>
 <button class="btn btn-danger" onclick="loginFn()">로그인</button>
 <button class="btn btn-dark" onclick="listFn()">목록</button>
+ <button class="btn btn-success" onclick="ajaxEx()">연습</button>
+<button class="btn bg-light" onclick="boardFn()">게시판</button>
 <%--<a href="/member">회원조회</a>--%>
 <%--<a href="/update"></a>--%>
 </body>
 <script>
+    const boardFn = () => {
+      location.href ="/board";
+    }
+
+
     const saveFn = () => {
        location.href = "/save";
     }
@@ -36,6 +43,10 @@
 
     const listFn =() => {
         location.href="/members";
+    }
+
+    const ajaxEx = () => {
+      location.href="/ajax-ex";
     }
 </script>
 </html>

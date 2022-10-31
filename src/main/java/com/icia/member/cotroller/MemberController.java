@@ -5,10 +5,7 @@ import com.icia.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -118,12 +115,45 @@ public String login(@ModelAttribute MemberDTO memberDTO ,HttpSession session,Mod
     }
 
 
+   @GetMapping("/ajax-ex")
+   public String ajaxEx(){
+        return "ajaxEx";
+   }
 
 
 
-    //
+   @GetMapping("/ajax1")
+   public @ResponseBody String ajax1(){            //@ResponseBody ajax 사용시 붙여줘야 한다
+       System.out.println("MemberController.ajax1");
+       return "ok";                        //리턴타입은 상관없음
+   }
 
+
+
+   @PostMapping("/ajax2")
+   public @ResponseBody String ajax2(){
+       System.out.println("MemberController.ajax2");
+       return "ok2";
+   }
+
+
+    @GetMapping("/ajax3")
+    public @ResponseBody String ajax3(@RequestParam("value1")String value1,
+                                      @RequestParam("value2")String value2){
+        System.out.println("MemberController.ajax3");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        return "vvv";
+    }
+   //
+   @PostMapping("/ajax4")
+   public @ResponseBody String ajax4(@RequestParam("value1")String value1,
+                                     @RequestParam("value2")String value2) {
+       System.out.println("MemberController.ajax3");
+       System.out.println("value1 = " + value1 + ", value2 = " + value2);
+       String  value3 = "i am return.";       //변수로 리턴
+       return value3;
 ///*  선언
+   }
 //리턴타입 : memberUpdate
 // */
 //
@@ -132,6 +162,43 @@ public String login(@ModelAttribute MemberDTO memberDTO ,HttpSession session,Mod
 //- /
 //
 //호출
+@PostMapping("/ajax5")
+public @ResponseBody MemberDTO ajax5(@RequestParam("value1")String value1,   // 모든타입이 올 수가 있다
+                                  @RequestParam("value2")String value2) {
+    System.out.println("MemberController.ajax5");
+    System.out.println("value1 = " + value1 + ", value2 = " + value2);
+
+   MemberDTO memberDTO= memberService.findById(2L);      //DTO 객체를 리턴
+    return memberDTO;
+///*  선언
+}
+
+
+    @PostMapping("/ajax6")
+    public @ResponseBody List<MemberDTO>  ajax6(@RequestParam("value1")String value1,   // 모든타입이 올 수가 있다
+                                         @RequestParam("value2")String value2) {
+        System.out.println("MemberController.ajax6");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        String value3 = "i am return";
+
+          List<MemberDTO>memberDTOList = memberService.findAll();    //리스트를 리턴
+        return memberDTOList;
+///*  선언
+    }
+
+//    @PostMapping("/emailCk")
+//  public @ResponseBody int emailCk(@RequestParam("memberEmail")String memberEmail){
+//       int result = memberService.emailCk(memberEmail);
+//        return result;
+//    }
+    @PostMapping("/duplicate-check")
+    public @ResponseBody String emailDuplicateCheck(@RequestParam("inputEmail") String memberEmail){
+        System.out.println("memberEmail = " + memberEmail);
+        String checkResult = memberService.emailDuplicateCheck(memberEmail);
+        return checkResult;
+    }
+
+
 
 
       @GetMapping ("/update")
@@ -175,9 +242,15 @@ public String login(@ModelAttribute MemberDTO memberDTO ,HttpSession session,Mod
     }
 
     @GetMapping("/board")
-    public String board(){
-        return "boardList";
+    public String boardForm(){
+        return "boardSave";
     }
+
+
+
+
+
+
 
 
 }

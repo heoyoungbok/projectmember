@@ -89,6 +89,22 @@ public class MemberService<MewberDTO> {
        }
     }
 
+    public String emailDuplicateCheck(String memberEmail) {
+        String checkResult = memberRepository.emailDuplicateCheck(memberEmail);
+        if(checkResult == null){                                              //널이면 조회된게없다ㅓ
+            return "ok";
+        }else {
+            return "no";
+        }
+    }
+
+//    public int emailCk(String memberEmail){
+//             int result  = memberRepository.emailCk(memberEmail);{
+//            return result;
+//        }
+//    }
+
+
 
 //    public void update(String memberEmail) {
 //        memberRepository.update(memberEmail);

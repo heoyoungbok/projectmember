@@ -62,6 +62,16 @@ public class MemberRepository {
      return sql.update("Member.update",memberDTO);
     }
 
+    public String emailDuplicateCheck(String memberEmail) {
+        return  sql.selectOne("Member.DuplicateCheck",memberEmail);
+    }
+
+//    public int emailCk(String memberEmail) {
+//        return sql.selectOne("Member.emailCk",memberEmail);
+//    }
+
+
+
 
 //    public void update(String memberEmail) {
 //        sql.update("Member.update",memberEmail);
